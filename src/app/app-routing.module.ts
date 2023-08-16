@@ -11,6 +11,27 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'ofertas',
+    loadChildren: () => import('./promocoes/promocoes.module').then( m => m.PromocoesPageModule)
+  },
+  {
+    path: 'head-set',
+    loadChildren: () => import('./head-set/head-set.module').then( m => m.HeadSetPageModule)
+  },
+  {
+    path: 'teclados',
+    loadChildren: () => import('./teclados/teclados.module').then( m => m.TecladosPageModule)
+  },
+  {
+    path: 'mouses',
+    loadChildren: () => import('./mouses/mouses.module').then( m => m.MousesPageModule)
+  },
+  {
+    path: 'mouse-pad',
+    loadChildren: () => import('./mouse-pad/mouse-pad.module').then( m => m.MousePadPageModule)
+  },
+
 ];
 
 @NgModule({
