@@ -41,6 +41,7 @@ export class BdtempService {
     if(produto){
       // adiciona o produto no final do vtor carrinho
       this.bd['carrinho'].push(produto);
+      this.totalCarrinho()
       return true;
     }
     return false;
@@ -49,10 +50,22 @@ export class BdtempService {
   removeProdutoCarrinho(posicao: number){
     //remove um elemento na posicao desejada
     this.bd['carrinho'].splice(posicao, 1);
+    this.totalCarrinho();
   }
 
   limparCarrinho(){
     this.bd['carrinho'] = [];
+    this.totalCarrinho();
+  }
+
+  totalCarrinho(){
+    let total = 0;
+    if(this.bd['carrinho'].length > 0){
+      for(let prod of this.bd['carrinho']){
+        total = total + prod.valor;
+      }
+    }
+    this.salvar('qtdeCarrinho',total);
   }
 }
 

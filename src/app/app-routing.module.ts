@@ -30,7 +30,11 @@ const routes: Routes = [
   {
     path: 'mouse-pad',
     loadChildren: () => import('./mouse-pad/mouse-pad.module').then( m => m.MousePadPageModule)
+  },  {
+    path: 'carrinho',
+    loadChildren: () => import('./carrinho/carrinho.module').then( m => m.CarrinhoPageModule)
   },
+
 
 ];
 

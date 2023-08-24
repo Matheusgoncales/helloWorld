@@ -10,6 +10,37 @@ export class HeadSetPage implements OnInit {
   //listaProdutos = [
   //   {colocar o prod aqui}
   // ]
+
+  qtdeItensCarrinho = 0;
+
+  listaProdutos = [
+    
+    {
+      nome: "Head-set red dragon",
+      descricao: "Head-set preto e vermelho",
+      valor: "199,90",
+      foto:""
+    },
+    {
+      nome: "Head-set red dragon",
+      descricao: "Head-set preto e vermelho",
+      valor: "199,90",
+      foto:""
+    },
+    {
+      nome: "Head-set red dragon",
+      descricao: "Head-set preto e vermelho",
+      valor: "199,90",
+      foto:""
+    },
+    {
+      nome: "Head-set red dragon",
+      descricao: "Head-set preto e vermelho",
+      valor: "199,90",
+      foto:""
+    }
+  ]
+produto: any;
   constructor(public bdtemp: BdtempService) { }
 
   ngOnInit() {
@@ -17,5 +48,10 @@ export class HeadSetPage implements OnInit {
 
   addProdutoCarrinho(produto: any){
     this.bdtemp.addProdutoCarrinho(produto);
+
+    this.buscarDadosCarrinho();
+  }
+  buscarDadosCarrinho(){
+    this.qtdeItensCarrinho = this.bdtemp.buscar('qtdeItensCarrinho');
   }
 }

@@ -1,16 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-back-button>
+
+    </ion-back-button>
+  </ion-buttons>
     <ion-title>headSet</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/carrinho">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge color="warning">{{qtdeItensCarrinho}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+
+
+
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">headSet</ion-title>
-      <!-- noem do produto | uppercase  vai deixar todos os nomes dos produtos maiusculos -->
-      <!-- na frente do valor do produto {{produto.valor | number: '1.2-2'}} -->
-      <!-- No botao do carrinho colocaremos uma funcao de (click)="addProdutoCarrinho(produto)" nele que disparará a informação -->
-    </ion-toolbar>
-  </ion-header>
+  <ion-header collapse="condense"></ion-header>
+
+  <ion-list>
+
+    <ion-item lines="full" *NgForm="let produto of listaProdutos">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" src="https://m.media-amazon.com/images/I/71jAUlz7KPL._AC_UF894,1000_QL80_.jpg" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{produto.nome}}</h2>
+        <p>{{produto.descricao}}</p>
+      </ion-label>
+      <ion-badge color="darl">{{produto.valor}}</ion-badge>
+      <ion-button slot="end" expand="block" color="dark">
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+        <!-- nome do produto | uppercase  vai deixar todos os nomes dos produtos maiusculos -->
+        <!-- na frente do valor do produto {{produto.valor | number: '1.2-2'}} -->
+        <!-- No botao do carrinho colocaremos uma funcao de (click)="addProdutoCarrinho(produto)" nele que disparará a informação -->
+
+    </ion-list>
 </ion-content>
