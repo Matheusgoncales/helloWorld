@@ -66,6 +66,8 @@ export class BdtempService {
       }
     }
     this.salvar('qtdeCarrinho',total);
+    this.salvar('qtdeItensCarrinho', this.bd['carrinho'].length)
   }
+
 }
 

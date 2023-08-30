@@ -1,13 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>mousePad</ion-title>
+    <ion-buttons slot="start">
+    <ion-back-button>
+
+    </ion-back-button>
+  </ion-buttons>
+    <ion-title>Mouse-pad</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/carrinho">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge color="warning">{{qtdeItensCarrinho}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">mousePad</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-header collapse="condense"></ion-header>
+
+  <ion-searchbar mode="ios" animated="true" placeholder="Buscar produto"></ion-searchbar>
+
+  <ion-item *ngFor="let produto of listaProdutos">
+    <ion-thumbnail slot="start">
+      <img [src]="produto.foto" />
+    </ion-thumbnail>
+
+    <ion-label>
+      <h2>{{produto.nome | uppercase}}</h2>
+      <h4>{{produto.descricao}}</h4>
+    </ion-label>
+
+    <ion-badge color="dark">R$ {{produto.valor | number:'1.2-2'}}</ion-badge>
+
+    <ion-button slot="end" expand="block" (click)="addProdutoCarrinho(produto)">
+      <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+    </ion-button>
+
+  </ion-item>
 </ion-content>
